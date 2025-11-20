@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Photography Portfolio | Abdulhamid C. Ibno</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background-color: #f0f0f0; color: #333; }
+        header { background-color: #222; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        /* REFLECTION */
+        .reflection { background: white; padding: 20px 40px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .reflection h2 { border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 0; }
+        .reflection strong { color: #555; }
+
+        /* GRID */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+        .card { background: white; padding: 10px; border-radius: 5px; cursor: pointer; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 3px; }
+        
+        /* POPUP MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; overflow-y: auto; }
+        .modal-content-container { 
+            width: 80%; 
+            max-width: 800px; 
+            margin: 50px auto; 
+            text-align: center;
+            padding-bottom: 50px;
+        }
+        .modal-img { 
+            width: 100%; 
+            height: auto; 
+            margin-bottom: 10px; 
+            border: 1px solid #555; 
+            display: block;
+        }
+        .caption { color: white; margin-bottom: 20px; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #555; padding-bottom: 10px;}
+        .desc { color: #ccc; margin-bottom: 30px; font-size: 1rem; }
+        .close { position: fixed; top: 20px; right: 30px; color: white; font-size: 50px; cursor: pointer; z-index: 101; }
+        .close:hover { color: #ff4444; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Digital Photography Portfolio</h1>
+    <p>Abdulhamid C. Ibno | 1st Year, BSCE | GED0007</p>
+</header>
+
+<div class="container">
+    <div class="reflection">
+        <h2>Course Reflection</h2>
+        <p><strong></strong> Taking GED0007 really shifted how I see photography. Before, I'd just grab my phone and take a picture of whatever seemed nice without putting much thought into it. Now I understand that there's actually intent behind every shot, like there's a reason you chose that angle or that moment. Learning about lines, patterns, and composition opened my eyes to details I used to ignore completely.</p>
+        <p><strong></strong> The stuff we did in class helped me start looking at things differently. When we visited the art museum, I found myself picking up on leading lines, frames, and silhouettes without even planning to look for them. Random things like the texture of tree bark, cracks in the pavement, or how food sits on a plate suddenly seemed worth photographing because I could see the shapes and patterns in them. It hit me that photography has this way of making ordinary moments feel significant.</p>
+        <p><strong></strong> This class didn't only improve my technical skills. It made me more creative overall. I actually enjoy taking photos now, mostly when I'm spending time with people I care about. It got me thinking more carefully about what I want to show and how to turn my emotions into something you can see. GED0007 made it clear that good photography isn't about expensive cameras or gear, It's about noticing what's already around you.</p>
+    </div>
+
+    <div class="gallery">
+        <div class="card" onclick="show(['Vertical.jpeg'], 'Vertical Lines', 'This photo was taken outside, and the first thing that caught my eye was how tall the building stood against the sky. The vertical lines make it feel dominant and powerful, almost like it’s reaching upward with confidence. It’s the kind of structure that naturally makes you look up and appreciate its height.')">
+            <img src="Vertical.jpeg"><br>Vertical Lines
+        </div>
+        <div class="card" onclick="show(['horizontal.jpeg'], 'Horizontal Lines', 'This scene feels steady the moment you look at it. The horizontal layers in the buildings create a relaxed, balanced mood, almost like everything is sitting comfortably in place. It’s calmer than vertical lines, and that’s what made this photo feel peaceful.')">
+            <img src="horizontal.jpeg"><br>Horizontal Lines
+        </div>
+        <div class="card" onclick="show(['LeadingLines.jpg'], 'Leading Lines', 'My girlfriend and I were walking together around Intramuros when I noticed how the cobblestone street naturally pulled your eyes forward. The lines guide you deeper into the path toward the people and buildings in the distance. It has this feeling of quiet movement, like the road itself is inviting you to follow it.')">
+            <img src="LeadingLines.jpg"><br>Leading Lines
+        </div>
+        <div class="card" onclick="show(['silhouette.jpg'], 'Silhouette', 'My girlfriend was standing in front of a bright red wall, and the lighting created a clean silhouette around her. Her shape stands out sharply, while the warm background gives the whole scene a dramatic feel. It’s simple, but it captures the moment in a striking way.')">
+            <img src="silhouette.jpg"><br>Silhouette
+        </div>
+        <div class="card" onclick="show(['3d.jpeg'], '3D Form (Food)', 'This photo came from our Korean BBQ date. The grill in the center and the side dishes around it create layers that make the food look full and three-dimensional. You can almost feel the warmth of the grill and the depth of the whole setup, which makes the moment even more memorable.')">
+            <img src="3d.jpeg"><br>3D Form (Food)
+        </div>
+        <div class="card" onclick="show(['shallowdepthoffield.jpg'], 'Shallow Depth', 'The purple flowers caught my attention because of how clean they looked when everything behind them blurred out. The sharp focus on the petals brings out their color and texture. It turns a simple subject into something more eye-catching.')">
+            <img src="shallowdepthoffield.jpg"><br>Shallow Depth
+        </div>
+        <div class="card" onclick="show(['organicpatterns.jpg'], 'Organic Patterns', 'The bark on the tree had these natural cracks and lines that made it interesting to look at. It’s imperfect and uneven, but that’s what makes organic patterns feel alive. Nature has its own way of creating designs without trying too hard.')">
+            <img src="organicpatterns.jpg"><br>Organic Patterns
+        </div>
+        <div class="card" onclick="show(['geometricpatterns.jpg'], 'Geometric Patterns', 'This artwork full of squares had such a neat and structured look. Everything was arranged evenly, which created a very organized pattern. It’s a clean example of how humans create order and design.')">
+            <img src="geometricpatterns.jpg"><br>Geometric Patterns
+        </div>
+        <div class="card" onclick="show(['irregularpatterns.jpg'], 'Irregular Patterns', 'I took this photo because the strokes and splashes of color had no real pattern, but they still worked together. The randomness gives it personality and makes you look closer to see the details. It’s messy in a good way.')">
+            <img src="irregularpatterns.jpg"><br>Irregular Patterns
+        </div>
+        <div class="card" onclick="show(['FrameWithinAFrame.jpg'], 'Frame in Frame', 'The arch with “Commonwealth of the Philippines” written on it naturally frames the scene inside. It guides your attention straight to me and my girlfriend and the details beyond the arch. This technique adds depth and makes the photo feel more focused.')">
+            <img src="FrameWithinAFrame.jpg"><br>Frame in Frame
+        </div>
+        <div class="card" onclick="show(['ruleofthirds.jpg'], 'Rule of Thirds', 'This is the shot of me standing in front of the huge painting inside the museum. I placed myself on the right third of the frame so the viewer sees me first and then follows where I’m looking. It makes the whole moment feel intentional instead of random.')">
+            <img src="ruleofthirds.jpg"><br>Rule of Thirds
+        </div>
+        <div class="card" onclick="show(['minimalism.jpg'], 'Minimalism', 'The statue stands out because everything around it is clean and empty. The open space makes the main subject feel stronger and more peaceful. The simple layout gives the picture a calm and organized feel.')">
+            <img src="minimalism.jpg"><br>Minimalism
+        </div>
+
+        <div class="card" onclick="show(['act1_p1.png', 'act1_p2.png', 'act1_p3.png'], 'Activity 1', 'Activity 1 output (Scroll down to read all pages).')">
+            <img src="act1_p1.png"><br>Activity 1 
+        </div>
+        <div class="card" onclick="show(['activity2.jpg], 'Activity 2', 'Activity 2 output')">
+            <img src="activity2.jpg"><br>Activity 2 
+        </div>
+        <div class="card" onclick="show(['activity3.jpg'], 'Activity 3', 'Activity 3 output')">
+            <img src="activity3.jpg"><br>Activity 3 
+        </div>
+    </div>
+</div>
+
+<div id="modal" class="modal">
+    <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+    <div class="modal-content-container">
+        <div class="caption" id="caption"></div>
+        <div class="desc" id="desc"></div>
+        <div id="imageContainer"></div>
+    </div>
+</div>
+
+<script>
+    function show(images, title, desc) {
+        var modal = document.getElementById('modal');
+        var container = document.getElementById('imageContainer');
+        var captionText = document.getElementById('caption');
+        var descText = document.getElementById('desc');
+
+        container.innerHTML = ''; // Clear previous images
+
+        images.forEach(function(imgSrc) {
+            var img = document.createElement('img');
+            img.src = imgSrc;
+            img.className = 'modal-img';
+            container.appendChild(img);
+        });
+
+        captionText.innerText = title;
+        descText.innerText = desc;
+        modal.style.display = 'block';
+    }
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById('modal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
